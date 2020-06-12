@@ -1,8 +1,22 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 .Header {
-  color: #443e3e;
-  text-shadow: 1px 1px 5px #fff;
+  color: #c1f762;
+  margin: 16px;
 }
 /* write your parent styles in here for your App.js */
+
+.search{
+  width: 20%;
+  font-size: 1.5rem;
+  background-color: #c1f762;
+  color: black;
+  border: none;
+  padding: 16px;
+  outline: none;
+  text-align: center;
+  margin: 16px;
+}
