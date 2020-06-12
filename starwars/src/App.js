@@ -30,7 +30,7 @@ const App = () => {
       <h1 className="Header">The World of Rick & Morty</h1>
       {
         characters.map( character =>{
-          return <Character characterInfo={character}></Character>
+          return <Character key={character.id} characterInfo={character}></Character>
         })
       }
     </div>

@@ -1,6 +1,6 @@
 // Write your Character component here
 
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
 
 const CharacterWrapper = styled.div`
@@ -9,7 +9,8 @@ const CharacterWrapper = styled.div`
     margin: 10px auto;
     display: flex;
     align-items: center;
-    /* box-shadow: 3px 3px 1px 1px #c7fa6c; */
+    justify-content: space-between;
+    padding: 15px;
     box-shadow:
     1px 0px 1px #c7fa6c,
     0px 1px 1px #c1f762,
@@ -31,28 +32,47 @@ const CharacterWrapper = styled.div`
         box-shadow: 0px 0px;
     }
 
-
     h2{
         color: #c1f762;
     }
-   
 `
 
 const Portrait = styled.img`
     width: 20%;
     margin: 10px;
     border-radius: 50%;
-    margin-right: 60px;
+`
+
+const CharacterDetails = styled.div`
+    color: black;
+    background-color: #c7fa6c ;
+    padding: 8px;
+    visibility: ${ props => props.display ? 'visible' : 'hidden'};
 `
 
 function Character(props){
+    // state
+    const [ openModal, setOpenModal ] = useState(false)
 
+    // properties
     const character = props.characterInfo
 
+    // event handlers
+    function displayInfo(e){
+        console.log('clicked');
+        
+        setOpenModal(!openModal)
+    }
+
     return(
-        <CharacterWrapper>
+        <CharacterWrapper onMouseOver={displayInfo} onMouseOut={displayInfo}>
             <Portrait src={character.image}></Portrait>
             <h2>{character.name}</h2>
+            <CharacterDetails display={openModal}>
+                <p>Status: {character.status}</p>
+                <p>Species: {character.species}</p>
+                <p>Gender: {character.gender}</p>
+            </CharacterDetails>
         </CharacterWrapper>
     )
 }
